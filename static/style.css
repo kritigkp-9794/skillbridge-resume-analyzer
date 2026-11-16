@@ -1,0 +1,316 @@
+
+/* ===== GLOBAL RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #2b1055 0%,
+        #6938a5 45%,
+        #c8a2e8 100%
+    );
+    background-attachment: fixed;
+    padding: 45px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== MAIN HEADING ===== */
+h1 {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0 12px;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+h2 {
+    color: #542783;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #542783;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* ===== PARAGRAPH ===== */
+p {
+    color: #f5eaff;
+    text-align: center;
+    line-height: 1.7;
+    margin: 10px 0 20px;
+}
+
+/* ===== FORM CARD ===== */
+form {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    padding: 38px;
+    border-radius: 22px;
+    margin: 20px auto;
+    box-shadow: 0 15px 45px rgba(20, 5, 45, 0.35);
+}
+
+/* ===== LABELS ===== */
+label {
+    display: block;
+    color: #48236f;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+
+/* ===== INPUT FIELDS ===== */
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid #d9c5f0;
+    border-radius: 10px;
+    background: #faf7ff;
+    color: #302044;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+input::placeholder {
+    color: #9a8aa9;
+}
+
+input:focus {
+    border-color: #8848c7;
+    box-shadow: 0 0 0 3px rgba(136,72,199,0.15);
+    background: #ffffff;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #914bd1, #51218c);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #7134b2, #351263);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(81,33,140,0.3);
+}
+
+/* ===== LINKS ===== */
+a {
+    color: #6b32a5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #351263;
+    text-decoration: underline;
+}
+
+/* ===== FORM TEXT ===== */
+form p {
+    color: #59476b;
+    margin-top: 18px;
+}
+
+/* ===== OTHER PAGE LINKS ===== */
+body > a {
+    color: #ffffff;
+    margin: 12px;
+    text-align: center;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 500px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    form {
+        padding: 25px 20px;
+    }
+}
+
+/* ===== DASHBOARD DESIGN ===== */
+
+.dashboard-page {
+    display: block;
+    padding: 40px 20px;
+}
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+    font-size: 38px;
+    color: #ffffff;
+}
+
+.dashboard-header p {
+    color: #f5eaff;
+    font-size: 17px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(20, 5, 45, 0.25);
+    transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    color: #542783;
+    font-size: 25px;
+}
+
+.dashboard-card p {
+    color: #655778;
+    margin: 15px 0 25px;
+}
+
+/* Dashboard Buttons */
+.dashboard-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, #914bd1, #51218c);
+    color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.dashboard-btn:hover {
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(81, 33, 140, 0.3);
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #b477df, #7540b5);
+}
+
+/* Logout */
+.dashboard-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logout-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background: #ffffff;
+    color: #682e9e;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.logout-btn:hover {
+    background: #f1e6ff;
+    text-decoration: none;
+}
+
+/* ===== ABOUT US PAGE ===== */
+
+.about-page {
+    display: block;
+    padding: 45px 20px;
+}
+
+.about-container {
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-container h1 {
+    font-size: 38px;
+    color: #ffffff;
+}
+
+.about-subtitle {
+    font-size: 18px;
+    color: #f5eaff;
+    margin-bottom: 35px;
+}
+
+.about-card {
+    background: #ffffff;
+    padding: 30px;
+    margin: 25px 0;
+    border-radius: 18px;
+    text-align: left;
+    box-shadow: 0 12px 30px rgba(20, 5, 45, 0.25);
+    transition: 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+}
+
+.about-card h2 {
+    color: #542783;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.about-card p {
+    color: #655778;
+    line-height: 1.8;
+}
+
+.about-card ul {
+    padding-left: 25px;
+    color: #59476b;
+    line-height: 2.2;
+}
+
+.about-card li {
+    margin-bottom: 5px;
+}
+
+.about-container > .dashboard-btn {
+    margin: 20px auto;
+}

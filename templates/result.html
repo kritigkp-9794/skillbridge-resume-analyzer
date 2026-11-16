@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Result | Skill Analyzer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #241044, #63349b, #c8a2e8);
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 18px 50px rgba(20, 5, 45, 0.3);
+        }
+
+        .top-label {
+            text-align: center;
+            color: #9363c5;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #45216e;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .role {
+            text-align: center;
+            color: #756487;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .role b {
+            color: #713bb0;
+        }
+
+        .overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .overview-card {
+            padding: 25px;
+            border-radius: 18px;
+            background: #faf7ff;
+            border: 1px solid #eadcf8;
+            text-align: center;
+        }
+
+        .overview-card h3 {
+            color: #542783;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .match {
+            width: 175px;
+            height: 175px;
+            margin: auto;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+        }
+
+        .match-content {
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .match-content h2 {
+            color: #542783;
+            font-size: 38px;
+        }
+
+        .match-content span {
+            color: #756487;
+            font-size: 13px;
+        }
+
+        .nlp-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #713bb0;
+            margin: 20px 0 12px;
+        }
+
+        .progress-track {
+            height: 12px;
+            width: 100%;
+            background: #eadcf8;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b477df, #542783);
+            border-radius: 20px;
+        }
+
+        .description {
+            color: #756487;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-top: 24px;
+            padding: 25px;
+            border-radius: 17px;
+            background: #faf7ff;
+            border: 1px solid #eadcf8;
+        }
+
+        .section h3 {
+            color: #542783;
+            margin-bottom: 18px;
+            font-size: 20px;
+        }
+
+        .section-subtitle {
+            color: #89799b;
+            font-size: 13px;
+            margin-top: -10px;
+            margin-bottom: 17px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            display: inline-block;
+            padding: 9px 16px;
+            border-radius: 25px;
+            background: #eadcf8;
+            color: #542783;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .found {
+            background: #dcf5e8;
+            color: #18794e;
+        }
+
+        .missing {
+            background: #ffe3e3;
+            color: #c0392b;
+        }
+
+        .recommendation {
+            padding: 17px;
+            margin: 13px 0;
+            background: #ffffff;
+            border-left: 4px solid #8955d4;
+            border-radius: 11px;
+            box-shadow: 0 3px 12px rgba(40, 10, 70, 0.06);
+        }
+
+        .recommendation b {
+            color: #542783;
+            font-size: 16px;
+        }
+
+        .recommendation p {
+            color: #756487;
+            margin-top: 7px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .success-message {
+            padding: 14px;
+            background: #e2f7eb;
+            color: #18794e;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 30px auto 15px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #914bd1, #51218c);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(81, 33, 140, 0.3);
+        }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 15px auto 0;
+            padding: 13px 30px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #b477df, #7540b5);
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .back:hover {
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            color: #9a8aab;
+            font-size: 12px;
+            margin-top: 28px;
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 25px 16px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .overview {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 19px;
+            }
+
+            .match {
+                width: 155px;
+                height: 155px;
+            }
+
+            .match-content {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .print-btn, .back {
+                display: none;
+            }
+
+            .section, .overview-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-label">SKILLBRIDGE CAREER ANALYSIS</div>
+
+    <h1>Resume Analysis Result</h1>
+
+    <p class="role">
+        Selected Job Role: <b>{{ job_role }}</b>
+    </p>
+
+    <!-- MATCH OVERVIEW -->
+    <div class="overview">
+
+        <div class="overview-card">
+
+            <h3>Skill Match</h3>
+
+            <div class="match"
+                 style="background: conic-gradient(#8955d4 0 {{ match_percentage }}%, #eadcf8 {{ match_percentage }}% 100%);">
+
+                <div class="match-content">
+                    <h2>{{ match_percentage }}%</h2>
+                    <span>Skill Coverage</span>
+                </div>
+
+            </div>
+
+            <p class="description">
+                Percentage of required skills found in your resume.
+            </p>
+
+        </div>
+
+
+        <div class="overview-card">
+
+            <h3>NLP Resume-Job Similarity</h3>
+
+            <div class="nlp-number">
+                {{ nlp_match_percentage }}%
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill"
+                     style="width: {{ nlp_match_percentage }}%;">
+                </div>
+            </div>
+
+            <p class="description">
+                TF-IDF and Cosine Similarity based text comparison
+                between your resume and selected job profile.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- REQUIRED SKILLS -->
+    <div class="section">
+
+        <h3>Required Skills</h3>
+
+        <p class="section-subtitle">
+            Skills expected for this job role.
+        </p>
+
+        <div class="skills">
+
+            {% for skill in required_skills %}
+                <span class="skill">{{ skill }}</span>
+            {% else %}
+                <p>No required skills available.</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- FOUND SKILLS -->
+    <div class="section">
+
+        <h3>Skills Found in Your Resume</h3>
+
+        <p class="section-subtitle">
+            Skills successfully detected in your uploaded resume.
+        </p>
+
+        <div class="skills">
+
+            {% for skill in found_skills %}
+                <span class="skill found">{{ skill }}</span>
+            {% else %}
+                <p>No matching skills detected.</p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- MISSING SKILLS -->
+    <div class="section">
+
+        <h3>Missing Skills</h3>
+
+        <p class="section-subtitle">
+            Skills you should learn to improve your job readiness.
+        </p>
+
+        <div class="skills">
+
+            {% for skill in missing_skills %}
+                <span class="skill missing">{{ skill }}</span>
+            {% else %}
+                <div class="success-message">
+                    Great! No missing skills for this job role.
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- LEARNING RECOMMENDATIONS -->
+    <div class="section">
+
+        <h3>Personalized Learning Recommendations</h3>
+
+        <p class="section-subtitle">
+            Suggested learning steps based on your missing skills.
+        </p>
+
+        {% for item in learning_plan %}
+
+            <div class="recommendation">
+
+                <b>{{ item.skill }}</b>
+
+                <p>{{ item.suggestion }}</p>
+
+            </div>
+
+        {% else %}
+
+            <div class="success-message">
+                Excellent! You have all the required skills.
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- ACTION BUTTONS -->
+    <button class="print-btn" onclick="window.print()">
+        Download Report / Print
+    </button>
+
+    <a href="/" class="back">
+        ← Go Back
+    </a>
+
+    <div class="footer">
+        Resume Analyzer & Skill Gap Analyzer
+        <br>
+        SKILLBRIDGE • CAREER ANALYSIS
+    </div>
+
+</div>
+
+</body>
+</html>

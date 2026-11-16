@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #2b1055 0%,
+                #6938a5 50%,
+                #c8a2e8 100%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 35px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: #ffffff;
+            padding: 42px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(20, 5, 45, 0.35);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: #f0e5ff;
+            border-radius: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #43206d;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #71627f;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 18px;
+            background: #f0e5ff;
+            color: #7139a8;
+            padding: 9px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            color: #48236f;
+            margin-bottom: 12px;
+        }
+
+        .upload-box {
+            border: 2px dashed #a77bd1;
+            background: #faf7ff;
+            border-radius: 16px;
+            padding: 28px 18px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .upload-box p {
+            color: #59476b;
+            margin-bottom: 10px;
+        }
+
+        .upload-box small {
+            color: #9688a5;
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            font-size: 14px;
+            color: #59476b;
+        }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 1.5px solid #ddcbed;
+            border-radius: 12px;
+            background: #faf7ff;
+            font-size: 15px;
+            color: #48236f;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        select:focus {
+            border-color: #8848c7;
+            box-shadow: 0 0 0 3px rgba(136, 72, 199, 0.12);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #914bd1, #51218c);
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 22px rgba(81, 33, 140, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            color: #9688a5;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 28px 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">📄</div>
+
+        <span class="tag">✦ SKILLBRIDGE • SMART CAREER ANALYSIS</span>
+
+        <h1>AI Resume Analyzer</h1>
+
+        <p class="subtitle">
+            Discover your skills, identify skill gaps, and
+            take the next step toward your dream career.
+        </p>
+
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+            <label>Upload Your Resume (PDF)</label>
+
+            <div class="upload-box">
+
+                <div class="upload-icon">📂</div>
+
+                <p><strong>Choose your resume PDF file</strong></p>
+
+                <small>Upload your resume in PDF format</small>
+
+                <input type="file" name="resume" accept=".pdf" required>
+
+            </div>
+
+            <label>Select Your Target Job Role</label>
+
+            <select name="job_role" required>
+
+                <option value="">Choose a job role</option>
+                <option>Python Developer</option>
+                <option>Web Developer</option>
+                <option>Java Developer</option>
+                <option>Data Analyst</option>
+                <option>Software Engineer</option>
+
+            </select>
+
+            <button type="submit">
+                ✨ Analyze My Resume
+            </button>
+
+        </form>
+
+        <p class="footer">
+            AI-Based Resume Analyzer & Skill Gap Analyzer
+        </p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-container">
+
+        <div class="dashboard-header">
+            <h1>Welcome, {{ session["user_name"] }}!</h1>
+            <p>Your Personal Career Development Dashboard</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>AI-Based Resume Analyzer</h2>
+
+            <p>
+                Analyze your resume, identify your skills,
+                discover missing skills and improve your career opportunities.
+            </p>
+
+            <a href="/" class="dashboard-btn">
+                Analyze Your Resume
+            </a>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>About Our Project</h2>
+
+            <p>
+                Our system helps students understand their skill gaps
+                and prepare for their desired job roles.
+            </p>
+
+            <a href="/about" class="dashboard-btn secondary-btn">
+                Learn More
+            </a>
+        </div>
+
+        <div class="dashboard-footer">
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Create Your Account</h1>
+    <p>Register to use AI-Based Resume Analyzer</p>
+
+    <form method="POST" action="/register">
+
+        <label>Full Name</label><br>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <br><br>
+
+        <label>Email Address</label><br>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <br><br>
+
+        <label>Password</label><br>
+        <input type="password" name="password" placeholder="Create password" required>
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p>Already have an account?
+        <a href="/login">Login Here</a>
+    </p>
+
+    <a href="/">Back to Home</a>
+
+</body>
+</html>
