@@ -7,6 +7,7 @@ import sqlite3
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import re
+import os
 
 app = Flask(__name__)
 app.secret_key = "resume-analyzer-secret-key-2026"
