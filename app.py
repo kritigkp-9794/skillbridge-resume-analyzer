@@ -397,8 +397,12 @@ def analyze():
     )
 
 
+
+# INITIALIZE DATABASE
+create_users_table()
+
+
 # RUN APPLICATION
 if __name__ == "__main__":
-
-    create_users_table()
     app.run(debug=True)
+
