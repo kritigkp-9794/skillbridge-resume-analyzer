@@ -10,7 +10,7 @@ import re
 import os
 
 app = Flask(__name__)
-app.secret_key = "resume-analyzer-secret-key-2026"
+app.secret_key = os.environ.get("SECRET_KEY", "local-development-key")
 
 
 # DATABASE CONNECTION
@@ -259,6 +259,13 @@ def logout():
 
     return redirect(url_for("login"))
 
+@app.route("/analyzer")
+def analyzer():
+
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    return render_template("index.html")
 
 # ABOUT US ROUTE
 @app.route("/about")
@@ -271,12 +278,19 @@ def about():
 @app.route("/")
 def home():
 
-    return render_template("index.html")
+    if "user_id" in session:
+        return redirect(url_for("dashboard"))
 
+    return redirect(url_for("register"))
 
 # ANALYZE RESUME ROUTE
 @app.route("/analyze", methods=["POST"])
 def analyze():
+
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    # Baaki existing code yahin rahega
 
     resume = request.files.get("resume")
     job_role = request.form.get("job_role")

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AI Resume Analyzer</title>
+    <title>SkillBridge - AI Resume Analyzer</title>
 
     <style>
         * {
@@ -26,8 +26,58 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 35px 20px;
+            padding: 100px 20px 35px;
         }
+
+        /* Navigation Bar */
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            right: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            color: white;
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            padding: 11px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .dashboard-link {
+            background: white;
+            color: #51218c;
+        }
+
+        .logout-link {
+            background: #51218c;
+            color: white;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Main Container */
 
         .container {
             width: 100%;
@@ -156,7 +206,28 @@
             margin-top: 25px;
         }
 
+        /* Mobile Responsive */
+
         @media (max-width: 500px) {
+            .navbar {
+                left: 15px;
+                right: 15px;
+                top: 15px;
+            }
+
+            .nav-brand {
+                font-size: 17px;
+            }
+
+            .nav-links {
+                gap: 7px;
+            }
+
+            .nav-links a {
+                padding: 9px 11px;
+                font-size: 12px;
+            }
+
             .container {
                 padding: 28px 20px;
             }
@@ -170,11 +241,40 @@
 
 <body>
 
+    <!-- Navigation Bar -->
+
+   <div class="navbar">
+
+    <div class="nav-brand">
+        SKILLBRIDGE
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="dashboard-link">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="logout-link">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+
+    <!-- Main Resume Analyzer -->
+
     <div class="container">
 
         <div class="logo">📄</div>
 
-        <span class="tag">✦ SKILLBRIDGE • SMART CAREER ANALYSIS</span>
+        <span class="tag">
+            ✦ SKILLBRIDGE • SMART CAREER ANALYSIS
+        </span>
 
         <h1>AI Resume Analyzer</h1>
 
@@ -183,7 +283,9 @@
             take the next step toward your dream career.
         </p>
 
-        <form action="/analyze" method="POST" enctype="multipart/form-data">
+        <form action="/analyze"
+              method="POST"
+              enctype="multipart/form-data">
 
             <label>Upload Your Resume (PDF)</label>
 
@@ -191,11 +293,20 @@
 
                 <div class="upload-icon">📂</div>
 
-                <p><strong>Choose your resume PDF file</strong></p>
+                <p>
+                    <strong>Choose your resume PDF file</strong>
+                </p>
 
-                <small>Upload your resume in PDF format</small>
+                <small>
+                    Upload your resume in PDF format
+                </small>
 
-                <input type="file" name="resume" accept=".pdf" required>
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf"
+                    required
+                >
 
             </div>
 

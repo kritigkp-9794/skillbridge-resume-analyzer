@@ -9,6 +9,15 @@
 
     <h1>Create Your Account</h1>
     <p>Register to use AI-Based Resume Analyzer</p>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red; font-weight: bold;">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
     <form method="POST" action="/register">
 
